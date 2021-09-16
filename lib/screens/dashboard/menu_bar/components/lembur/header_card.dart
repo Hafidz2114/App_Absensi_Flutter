@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../size_config.dart';
 
-class TextBannerIzin extends StatelessWidget {
-  const TextBannerIzin({
+class TextBannerLembur extends StatelessWidget {
+  const TextBannerLembur({
     Key key,
   }) : super(key: key);
 
@@ -13,7 +13,7 @@ class TextBannerIzin extends StatelessWidget {
     return Container(
       height: 100,
       width: double.infinity,
-      margin: EdgeInsets.all(getProportionateScreenWidth(10)),
+      margin: EdgeInsets.all(getProportionateScreenWidth(20)),
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(20),
         vertical: getProportionateScreenWidth(15),

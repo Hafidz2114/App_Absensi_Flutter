@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'form_lembur.dart';
+import 'form_izin.dart';
 import 'header_card.dart';
 import '../../../../../size_config.dart';
 
 class Body extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,9 +18,9 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.02),
-                TextBannerLembur(),
+                TextBannerIzin(),
                 SizedBox(height: SizeConfig.screenHeight * 0.06),
-                LemburForm(),
+                IzinForm(),
               ],
             ),
           ),
@@ -28,4 +29,3 @@ class Body extends StatelessWidget {
     );
   }
 }
-

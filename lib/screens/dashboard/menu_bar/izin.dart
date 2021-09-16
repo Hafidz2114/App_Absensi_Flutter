@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'components/body_izin.dart';
+import 'components/izin/body.dart';
 
 class IzinScreen extends StatelessWidget {
   static String routeName = "/Izin";
@@ -12,7 +12,7 @@ class IzinScreen extends StatelessWidget {
         centerTitle: true,
         title: Text("Pengajuan Izin"),
       ),
-      body: TextBanner(),
+      body: Body(),
     );
   }
 }

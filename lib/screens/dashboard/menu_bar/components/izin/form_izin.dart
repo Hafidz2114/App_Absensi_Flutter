@@ -7,16 +7,15 @@ import 'package:app_absensi/components/default_button.dart';
 import 'package:app_absensi/components/form_error.dart';
 import 'package:app_absensi/helper/keyboard.dart';
 
-class LemburForm extends StatefulWidget {
+class IzinForm extends StatefulWidget {
   @override
-  _LemburFormState createState() => _LemburFormState();
+  _IzinFormState createState() => _IzinFormState();
 }
 
-class _LemburFormState extends State<LemburForm> {
+class _IzinFormState extends State<IzinForm> {
   final _fromKey = GlobalKey<FormState>();
   String nama;
   String tanggal;
-  String jam;
   String keperluan;
   DateTimeRange dateRange;
 
@@ -61,8 +60,6 @@ class _LemburFormState extends State<LemburForm> {
           buildNameFormField(),
           SizedBox(height: getProportionateScreenHeight(45)),
           buildDateFromField(),
-          SizedBox(height: getProportionateScreenHeight(45)),
-          buildTimeFromField(),
           SizedBox(height: getProportionateScreenHeight(45)),
           buildReasonFormField(),
           SizedBox(height: getProportionateScreenHeight(10)),
@@ -134,30 +131,6 @@ class _LemburFormState extends State<LemburForm> {
       decoration: InputDecoration(
         labelText: "Tanggal Lembur",
         hintText: "Hari ini - Sampai dengan",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-    );
-  }
-
-  TextFormField buildTimeFromField() {
-    return TextFormField(
-      keyboardType: TextInputType.datetime,
-      onSaved: (newValue) => jam = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kTimeNullError);
-        }
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          addError(error: kTimeNullError);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Jam Lembur",
-        hintText: "Total jam lembur kamu",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
     );

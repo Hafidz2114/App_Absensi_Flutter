@@ -26,7 +26,7 @@ const String kMatchPassError = "Password tidak cocok";
 
 const String kNameNullError = "Mohon isi nama kamu";
 const String kDateNullError = "Mohon pilih tanggal kamu";
-const String kTimeNullError = "Mohon pilih jam kamu";
+const String kTimeNullError = "Mohon isi jam kamu";
 const String kReasonNullError = "Mohon isi keperluan kamu";
 
 final otpInputDecoration = InputDecoration(
