@@ -1,7 +1,7 @@
 import 'package:app_absensi/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'components/body_absensi.dart';
+import 'components/absensi/body.dart';
 
 class AbsensiScreen extends StatelessWidget {
   static String routeName = "/Absensi";
