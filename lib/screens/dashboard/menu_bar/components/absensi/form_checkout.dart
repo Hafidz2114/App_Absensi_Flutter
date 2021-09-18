@@ -15,7 +15,8 @@ class CheckOutForm extends StatefulWidget {
 class _CheckOutFormState extends State<CheckOutForm> {
   final _fromKey = GlobalKey<FormState>();
   String nama;
-  DateTimeRange dateRange;
+  DateTime date;
+  TimeOfDay time;
 
   final List<String> errors = [];
 
@@ -33,23 +34,26 @@ class _CheckOutFormState extends State<CheckOutForm> {
       });
   }
 
-  String getFrom() {
-    if (dateRange == null) {
-      return 'Hari ini';
+ String getDate() {
+    if (date == null) {
+      return 'Pilih Tanggal Hari Ini';
     } else {
-      return DateFormat('dd/MM/yyyy').format(dateRange.start);
+      return DateFormat('EEEEEEEEE, dd - MM - yyyy').format(date);
     }
   }
 
-  String getUntil() {
-    if (dateRange == null) {
-      return 'Sampai dengan';
+  String getTime() {
+    if (time == null) {
+      return 'Pilih Jam Pulang';
     } else {
-      return DateFormat('dd/MM/yyyy').format(dateRange.end);
+      final hours = time.hour.toString().padLeft(2, '0');
+      final minutes = time.minute.toString().padLeft(2, '0');
+
+      return '$hours:$minutes';
     }
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Form(
       key: _fromKey,
@@ -58,13 +62,15 @@ class _CheckOutFormState extends State<CheckOutForm> {
           buildNameFormField(),
           SizedBox(height: getProportionateScreenHeight(45)),
           buildDateFromField(),
+          SizedBox(height: getProportionateScreenHeight(45)),
+          buildTimeFromField(),
           SizedBox(height: getProportionateScreenHeight(10)),
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(35)),
           SizedBox(
             width: SizeConfig.screenWidth * 0.6,
             child: DefaultButton(
-              text: "Buat Pengajuan",
+              text: "Check In",
               press: () {
                 if (_fromKey.currentState.validate()) {
                   _fromKey.currentState.save();
@@ -121,28 +127,48 @@ class _CheckOutFormState extends State<CheckOutForm> {
         return null;
       },
       onTap: () {
-        pickDateRange(context);
+        pickDate(context);
         FocusScope.of(context).requestFocus(new FocusNode());
       },
       decoration: InputDecoration(
-        labelText: "Tanggal Lembur",
-        hintText: "Hari ini - Sampai dengan",
+        labelText: "Tanggal Check Out",
+        hintText: "${getDate()}",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
     );
   }
 
-  // Data Range Picker
-  Future pickDateRange(BuildContext context) async {
-    final initialDateRange = DateTimeRange(
-      start: DateTime.now(),
-      end: DateTime.now().add(Duration(hours: 24 * 3)),
+  TextEditingController timecontroller = TextEditingController();
+  TextFormField buildTimeFromField() {
+    return TextFormField(
+      keyboardType: TextInputType.datetime,
+      controller: timecontroller,
+      validator: (value) {
+        if (value.isEmpty) {
+          return kTimeNullError;
+        }
+        return null;
+      },
+      onTap: () {
+        pickTime(context);
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      decoration: InputDecoration(
+        labelText: "Jam Check Out",
+        hintText: "${getTime()}",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
     );
-    final newDateRange = await showDateRangePicker(
+  }
+
+  // Date Picker
+  Future pickDate(BuildContext context) async {
+    final initialDate = DateTime.now();
+    final newDate = await showDatePicker(
       context: context,
+      initialDate: date ?? initialDate,
       firstDate: DateTime(DateTime.now().year - 5),
       lastDate: DateTime(DateTime.now().year + 5),
-      initialDateRange: dateRange ?? initialDateRange,
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData.light().copyWith(
@@ -156,11 +182,41 @@ class _CheckOutFormState extends State<CheckOutForm> {
       },
     );
 
-    if (newDateRange == null) return;
+    if (newDate == null) return;
+
     setState(
       () => {
-        dateRange = newDateRange,
-        datecontroller.text = "${getFrom()} - ${getUntil()}",
+        date = newDate,
+        datecontroller.text = "${getDate()}",
+      },
+    );
+  }
+
+  //Time Picker
+  Future pickTime(BuildContext context) async {
+    final initialTime = TimeOfDay(hour: 9, minute: 0);
+    final newTime = await showTimePicker(
+      context: context,
+      initialTime: time ?? initialTime,
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.teal,
+            accentColor: Colors.teal,
+            colorScheme: ColorScheme.light(primary: Colors.teal),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child,
+        );
+      },
+    );
+
+    if (newTime == null) return;
+
+    setState(
+      () => {
+        time = newTime,
+        timecontroller.text = "${getTime()}",
       },
     );
   }

@@ -19,7 +19,7 @@ class AbsensiMasuk extends StatelessWidget {
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.02),
                 TextBannerMasuk(),
-                SizedBox(height: SizeConfig.screenHeight * 0.06),
+                SizedBox(height: SizeConfig.screenHeight * 0.05),
                 CheckInForm(),
               ],
             ),
@@ -44,7 +44,7 @@ class AbsensiPulang extends StatelessWidget {
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.02),
                 TextBannerPulang(),
-                SizedBox(height: SizeConfig.screenHeight * 0.06),
+                SizedBox(height: SizeConfig.screenHeight * 0.05),
                 CheckOutForm(),
               ],
             ),
