@@ -33,7 +33,6 @@ class Body extends StatelessWidget {
       endTime: DateTime.now().add(Duration(minutes: 45)),
       subject: 'Meeting',
       color: Colors.red,
-      isAllDay: true,
     ));
 
     return _DataSource(appointments);
