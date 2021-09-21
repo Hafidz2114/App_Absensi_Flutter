@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
+
+import 'components/kalender/body.dart';
 
 class KalenderScreen extends StatelessWidget {
   static String routeName = "/Kalender";
@@ -11,22 +12,8 @@ class KalenderScreen extends StatelessWidget {
         centerTitle: true,
         title: Text("Kalender"),
       ),
-      body: SfCalendar(
-        view: CalendarView.month,
-        firstDayOfWeek: 1,
-        monthViewSettings: MonthViewSettings(showAgenda: true),
-        showDatePickerButton: true,
-        allowViewNavigation: true,
-        
-        allowedViews: <CalendarView>
-        [
-          CalendarView.day,
-          CalendarView.week,
-          CalendarView.workWeek,
-          CalendarView.month,
-          CalendarView.schedule
-        ],
-      ),
+      body: Body(),
     );
   }
 }
+
