@@ -194,7 +194,7 @@ class _CheckOutFormState extends State<CheckOutForm> {
 
   //Time Picker
   Future pickTime(BuildContext context) async {
-    final initialTime = TimeOfDay(hour: 9, minute: 0);
+    final initialTime = TimeOfDay(hour: 17, minute: 0);
     final newTime = await showTimePicker(
       context: context,
       initialTime: time ?? initialTime,

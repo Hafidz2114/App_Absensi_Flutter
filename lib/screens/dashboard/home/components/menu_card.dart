@@ -5,6 +5,7 @@ import '../../../../size_config.dart';
 import 'package:app_absensi/screens/dashboard/menu_bar/absensi.dart';
 import 'package:app_absensi/screens/dashboard/menu_bar/izin.dart';
 import 'package:app_absensi/screens/dashboard/menu_bar/lembur.dart';
+import 'package:app_absensi/screens/dashboard/menu_bar/kalender.dart';
 
 class ListMenu extends StatelessWidget {
   @override
@@ -51,12 +52,12 @@ class ListMenu extends StatelessWidget {
                   );
                 }
 
-                // if (index == 3) {
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => ScannerScreen()),
-                //   );
-                // }
+                if (index == 3) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => KalenderScreen()),
+                  );
+                }
 
                 // if (index == 3) {
                 //   Navigator.push(

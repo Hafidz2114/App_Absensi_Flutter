@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'App Absensi',
-      theme: theme(),  
+      theme: theme(),
       initialRoute: LoginScreen.routeName,
       routes: routes,
     );

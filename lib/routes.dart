@@ -1,3 +1,4 @@
+import 'package:app_absensi/screens/dashboard/menu_bar/kalender.dart';
 import 'package:app_absensi/screens/dashboard/menu_bar/lembur.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,4 +26,5 @@ final Map<String, WidgetBuilder> routes = {
   AbsensiScreen.routeName: (context) => AbsensiScreen(),
   IzinScreen.routeName: (context) => IzinScreen(),
   LemburScreen.routeName: (context) => LemburScreen(),
+  KalenderScreen.routeName: (context) => KalenderScreen(),
 };
