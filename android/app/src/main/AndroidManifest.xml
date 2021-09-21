@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app_absensi">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="app_absensi"
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="Absensi"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
